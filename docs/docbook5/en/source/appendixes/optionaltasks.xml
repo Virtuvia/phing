@@ -9346,6 +9346,13 @@ Note that you can omit both startpoint and track attributes in this case
                         <entry>No</entry>
                     </row>
                     <row>
+                        <entry><literal>useagent</literal></entry>
+                        <entry><literal role="type">Boolean</literal></entry>
+                        <entry>Support pulling authentication from a SSH Agent</entry>
+                        <entry><literal>false</literal></entry>
+                        <entry>No</entry>
+                    </row>
+                    <row>
                         <entry><literal>pubkeyfile</literal></entry>
                         <entry><literal role="type">String</literal></entry>
                         <entry>Public key file (OpenSSH format) to use for the connection</entry>
@@ -9548,6 +9555,13 @@ host="webserver" todir="/www/htdocs/project/">
                         <entry><literal role="type">String</literal></entry>
                         <entry>Password to use for the connection</entry>
                         <entry>none</entry>
+                        <entry>No</entry>
+                    </row>
+                    <row>
+                        <entry><literal>useagent</literal></entry>
+                        <entry><literal role="type">Boolean</literal></entry>
+                        <entry>Support pulling authentication from a SSH Agent</entry>
+                        <entry><literal>false</literal></entry>
                         <entry>No</entry>
                     </row>
                     <row>
