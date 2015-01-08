@@ -41,6 +41,7 @@ class ScpTask extends Task
     protected $port = 22;
     protected $methods = null;
     protected $username = "";
+    protected $useagent = "";
     protected $password = "";
     protected $autocreate = true;
     protected $fetch = false;
@@ -143,6 +144,22 @@ class ScpTask extends Task
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @param bool $useagent
+     */
+    public function setUseagent($useagent)
+    {
+        $this->useagent = $useagent;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getUseagent()
+    {
+        return $this->useagent;
     }
 
     /**
@@ -385,6 +402,12 @@ class ScpTask extends Task
                 $this->privkeyfile,
                 $this->privkeyfilepassphrase
             );
+        }  else if ($this->useagent) {
+            if (!function_exists('ssh2_auth_agent')) {
+                throw new BuildException("Support for SSH Agents requires libssl >= 1.2.3 and PHP SSH2 >= 0.12");
+            }
+
+            $could_auth = ssh2_auth_agent($this->connection, $this->username);
         } else {
             $could_auth = ssh2_auth_password($this->connection, $this->username, $this->password);
         }
